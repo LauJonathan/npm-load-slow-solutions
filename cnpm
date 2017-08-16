@@ -1,0 +1,21 @@
+淘宝针对国内下载npm库缓慢的问题，使用建立自己的cnpm库，可以很方便使用在公司内部使用。
+地址：http://npm.taobao.org/
+
+
+使用淘宝的NPM库镜像
+$ npm install -g cnpm --registry=http://registry.npm.taobao.org
+
+
+如果想用之前npm之前的cache，加--cache参数是没有用的
+npm install -g cnpm --registry=http://registry.npm.taobao.org --cache=D:\WebTool\nodejs\node_cache
+可以修改cnpm的config.js
+
+var config = module.exports = {
+  cnpmHost: 'http://npm.taobao.org',
+  // cnpmRegistry: 'http://r.cnpmjs.org',
+  cnpmRegistry: 'http://registry.npm.taobao.org',
+  disturl: 'http://npm.taobao.org/dist', // download dist tarball for node-gyp
+  //cache: path.join(root, '.npm/.cache_cnpm'),  //cache folder name
+  cache:'D:/WebTool/nodejs/node_cache', //my cnpm cache,done!
+  userconfig: path.join(root, '.cnpmrc')
+};
